@@ -9,7 +9,7 @@
     </style>
 
     <style name="Widget.BMUN.BottomAppBar" parent="Widget.MaterialComponents.BottomAppBar">
-        <item name="backgroundTint">?attr/colorAccent</item>
+        <item name="backgroundTint">@color/colorPrimaryLight</item>
         <item name="titleTextAppearance">?attr/textAppearanceHeadline3</item>
     </style>
 
