@@ -7,7 +7,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 'android-P'
     defaultConfig {
-        applicationId "com.example.npimpalkhar.bmun_guide"
+        applicationId "com.example.npimpalkhar.bmun_guide_android"
         minSdkVersion 16
         targetSdkVersion 27
         versionCode 1
