@@ -36,10 +36,15 @@ class DGuideFragment : Fragment() {
         // Inflate the layout for this fragment
         val view = inflater.inflate(R.layout.fragment_dguide, container, false)
 
-        id
+        return view
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
         main_pager.adapter = myPagerAdapter()
 
         bottom_nav.setOnNavigationItemSelectedListener { item: MenuItem ->
+            println(item.itemId)
             when (item.itemId) {
                 R.id.guide -> main_pager.currentItem = 0
                 R.id.about -> main_pager.currentItem = 1
@@ -50,12 +55,20 @@ class DGuideFragment : Fragment() {
             true
         }
 
-        return view
+        val txn = childFragmentManager.beginTransaction()
+        if (!example1.isAdded) {
+            txn.add(R.id.main_pager, example1, ExampleFragment.TAG)
+        }
+        if (!example2.isAdded) {
+            txn.add(R.id.main_pager, example2, DelGuideFragment.TAG)
+        }
+
+        txn.commit()
     }
 
     private inner class myPagerAdapter : PagerAdapter() {
         private var currTransaction: FragmentTransaction? = null
-        private var currPrimaryItem : Fragment? = example1
+        private var currPrimaryItem : Fragment? = null
 
         private fun beginTransaction() : FragmentTransaction {
             return childFragmentManager.beginTransaction()
@@ -65,8 +78,6 @@ class DGuideFragment : Fragment() {
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val fragment: Fragment = when (position) {
                 0 -> example1
-                1 -> example1
-                2 -> example2
                 else -> example2
             }
             val txn: FragmentTransaction = currTransaction ?: beginTransaction()
@@ -119,8 +130,7 @@ class DGuideFragment : Fragment() {
         override fun getPageTitle(position: Int): CharSequence =
                 when (position) {
                     0 -> resources.getString(R.string.test)
-                    1 -> resources.getString(R.string.test2)
-                    else -> "Error"
+                    else -> resources.getString(R.string.test2)
                 }
 
         override fun isViewFromObject(view: View, obj: Any): Boolean = (obj as Fragment).view === view
