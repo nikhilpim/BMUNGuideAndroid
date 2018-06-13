@@ -7,4 +7,6 @@
     <string name="flashcards">Flashcards</string>
     <string name="info">Info</string>
     <string name="connect">Connect</string>
+    <string name="test">THIS IS A TEST FRAGMENT</string>
+    <string name="test2">THIS IS ANOTHER EQUALLY TRIVIAL TEST</string>
 </resources>
