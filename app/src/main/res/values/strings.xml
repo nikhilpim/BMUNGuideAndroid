@@ -2,4 +2,5 @@
     <string name="app_name">BMUN-Guide-Android</string>
 
     <string name="hello_blank_fragment">Empty</string>
+    <string name="del_guide">Guide</string>
 </resources>
