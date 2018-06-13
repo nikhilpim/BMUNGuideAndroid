@@ -2,6 +2,17 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:title="@string/del_guide"
-        android:icon="@drawable/ic_baseline_menu_24px">
-    </item>
+        android:icon="@drawable/ic_baseline_book_24px"/>
+    <item
+        android:title="@string/committees"
+        android:icon="@drawable/ic_baseline_gavel_24px"/>
+    <item
+        android:title="@string/flashcards"
+        android:icon="@drawable/ic_baseline_aspect_ratio_24px"/>
+    <item
+        android:title="@string/info"
+        android:icon="@drawable/ic_baseline_attach_money_24px"/>
+    <item
+        android:title="@string/connect"
+        android:icon="@drawable/ic_baseline_chat_bubble_outline_24px"/>
 </menu>

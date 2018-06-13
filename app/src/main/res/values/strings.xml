@@ -3,4 +3,8 @@
 
     <string name="hello_blank_fragment">Empty</string>
     <string name="del_guide">Guide</string>
+    <string name="committees">About</string>
+    <string name="flashcards">Flashcards</string>
+    <string name="info">Info</string>
+    <string name="connect">Connect</string>
 </resources>
