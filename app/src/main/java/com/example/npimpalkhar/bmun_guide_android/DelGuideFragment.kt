@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.app.Fragment
 import android.graphics.Color
 import android.graphics.pdf.PdfDocument
+import android.graphics.pdf.PdfRenderer
 import android.support.v4.view.ViewPager
 import android.view.LayoutInflater
 import android.view.View
@@ -22,10 +23,7 @@ import com.github.barteksc.pdfviewer.PDFView
 import com.github.barteksc.pdfviewer.util.FitPolicy
 import com.shockwave.pdfium.PdfDocument.Meta
 import com.shockwave.pdfium.PdfDocument.Bookmark
-
-
-
-
+import kotlinx.android.synthetic.main.fragment_dguide.*
 
 
 // TODO: Rename parameter arguments, choose names that match
@@ -52,12 +50,6 @@ class DelGuideFragment : android.support.v4.app.Fragment(), OnPageChangeListener
 
     override fun onStart() {
         super.onStart()
-//        println("I am started!")
-//        pdf_viewer.setBackgroundColor(Color.LTGRAY)
-//        var testFile: File = File("/Users/npimpalkhar/Documents/GitHub/BMUNGuideAndroid/app/src/main/assets/Caucus.pdf")
-//        pdf_viewer.fromFile(testFile)
-//        pdf_viewer.loadPages()
-
         pdf_viewer.fromAsset("Caucus.pdf")
                 .defaultPage(pageNumber)
                 .onPageChange(this)
@@ -67,6 +59,7 @@ class DelGuideFragment : android.support.v4.app.Fragment(), OnPageChangeListener
 //                .spacing(10) // in dp
                 .onPageError(this)
                 .load()
+
     }
 
     override fun onPageChanged(page: Int, pageCount: Int) {

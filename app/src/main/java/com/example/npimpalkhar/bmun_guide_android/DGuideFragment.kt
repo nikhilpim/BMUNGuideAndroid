@@ -17,12 +17,12 @@ import kotlinx.android.synthetic.*
 
 
 class DGuideFragment : Fragment() {
+    private val delGuideMenu
+        get() = childFragmentManager.findFragmentByTag(DelGuideMenuFragment.TAG) as DelGuideMenuFragment? ?: DelGuideMenuFragment()
     private val pdfShell
         get() = childFragmentManager.findFragmentByTag(DelGuideFragment.TAG) as DelGuideFragment? ?: DelGuideFragment()
     private val example1
         get() = childFragmentManager.findFragmentByTag(ExampleFragment.TAG) as ExampleFragment? ?: ExampleFragment()
-    private val example2
-        get() = childFragmentManager.findFragmentByTag(DelGuideFragment.TAG) as DelGuideFragment? ?: DelGuideFragment()
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? {
@@ -50,12 +50,16 @@ class DGuideFragment : Fragment() {
         }
 
         val txn = childFragmentManager.beginTransaction()
+        if (!delGuideMenu.isAdded) {
+            txn.add(R.id.main_pager, delGuideMenu, DelGuideMenuFragment.TAG)
+        }
+        if (!pdfShell.isAdded) {
+            txn.add(R.id.main_pager, pdfShell, DelGuideFragment.TAG)
+        }
         if (!example1.isAdded) {
             txn.add(R.id.main_pager, example1, ExampleFragment.TAG)
         }
-        if (!example2.isAdded) {
-            txn.add(R.id.main_pager, example2, DelGuideFragment.TAG)
-        }
+
 
         txn.commit()
     }
@@ -71,7 +75,8 @@ class DGuideFragment : Fragment() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val fragment: Fragment = when (position) {
-                0 -> pdfShell
+                0 -> delGuideMenu
+                1 -> pdfShell
                 else -> example1
             }
             val txn: FragmentTransaction = currTransaction ?: beginTransaction()
