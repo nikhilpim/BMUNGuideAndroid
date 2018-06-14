@@ -16,15 +16,6 @@ import android.view.MenuItem
 import kotlinx.android.synthetic.*
 
 
-/**
- * A simple [Fragment] subclass.
- * Activities that contain this fragment must implement the
- * [DGuideFragment.OnFragmentInteractionListener] interface
- * to handle interaction events.
- * Use the [DGuideFragment.newInstance] factory method to
- * create an instance of this fragment.
- *
- */
 class DGuideFragment : Fragment() {
     private val example1
         get() = childFragmentManager.findFragmentByTag(ExampleFragment.TAG) as ExampleFragment? ?: ExampleFragment()
@@ -41,6 +32,7 @@ class DGuideFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         main_pager.adapter = myPagerAdapter()
 
         bottom_nav.setOnNavigationItemSelectedListener { item: MenuItem ->
