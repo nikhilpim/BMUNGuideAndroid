@@ -17,6 +17,8 @@ import kotlinx.android.synthetic.*
 
 
 class DGuideFragment : Fragment() {
+    private val pdfShell
+        get() = childFragmentManager.findFragmentByTag(DelGuideFragment.TAG) as DelGuideFragment? ?: DelGuideFragment()
     private val example1
         get() = childFragmentManager.findFragmentByTag(ExampleFragment.TAG) as ExampleFragment? ?: ExampleFragment()
     private val example2
@@ -69,8 +71,8 @@ class DGuideFragment : Fragment() {
 
         override fun instantiateItem(container: ViewGroup, position: Int): Any {
             val fragment: Fragment = when (position) {
-                0 -> example1
-                else -> example2
+                0 -> pdfShell
+                else -> example1
             }
             val txn: FragmentTransaction = currTransaction ?: beginTransaction()
             if (currTransaction == null) {

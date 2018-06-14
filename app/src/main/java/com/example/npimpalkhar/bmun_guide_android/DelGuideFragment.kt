@@ -18,6 +18,8 @@ import com.github.barteksc.pdfviewer.scroll.DefaultScrollHandle
 import kotlinx.android.synthetic.main.fragment_del_guide.*
 import java.io.File
 import android.util.Log
+import com.github.barteksc.pdfviewer.PDFView
+import com.github.barteksc.pdfviewer.util.FitPolicy
 import com.shockwave.pdfium.PdfDocument.Meta
 import com.shockwave.pdfium.PdfDocument.Bookmark
 
@@ -61,14 +63,14 @@ class DelGuideFragment : android.support.v4.app.Fragment(), OnPageChangeListener
                 .onPageChange(this)
                 .enableAnnotationRendering(true)
                 .onLoad(this)
-                .scrollHandle(DefaultScrollHandle(context))
-                .spacing(10) // in dp
+                .scrollHandle(null)
+//                .spacing(10) // in dp
                 .onPageError(this)
                 .load()
     }
 
     override fun onPageChanged(page: Int, pageCount: Int) {
-        pageNumber = page;
+        pageNumber = page
     }
 
     override fun loadComplete(nbPages: Int) {

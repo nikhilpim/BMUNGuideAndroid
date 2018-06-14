@@ -1,11 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_height="match_parent"
+<LinearLayout android:layout_height="match_parent"
     android:layout_width="match_parent"
     xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <android.support.v7.widget.AppCompatTextView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/mtrl_bottomappbar_height"
+        android:text="@string/app_name"/>
 
     <com.github.barteksc.pdfviewer.PDFView
         android:id="@+id/pdf_viewer"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
-</RelativeLayout>
+        android:layout_height="match_parent"
+        android:layout_gravity="bottom"
+        android:textAlignment="center" />
+</LinearLayout>
